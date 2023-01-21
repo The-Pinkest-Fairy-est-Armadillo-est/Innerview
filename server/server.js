@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const app = express();
-const apiRouter = require('./routes/api');
+//const apiRouter = require('./routes/api');
 
 const PORT = 3000;
 
@@ -13,13 +13,13 @@ app.use(express.urlencoded({ extended: true }));
 // app.use(express.static(path.resolve(__dirname, '../client')));
 
 // Defining Route Handlers
-app.use('/api', apiRouter);
+// app.use('/api', apiRouter);
 
 // Defining catch-all route handler for any requests to unknown routes
 app.use('*', (req, res) => res.status(404).send('Page not found.'));
 
 // Defining Global Error Handler for Middleware Functions
-app.use((er, req, res, next) => {
+app.use((err, req, res, next) => {
   const defaultErr = {
     log: 'Express global error handler caught unknown middleware error',
     status: 400,
@@ -31,6 +31,6 @@ app.use((er, req, res, next) => {
 });
 
 // Start server and tell it to listen to the PORT assignment for any incoming requests
-app.listen(PORT, () => { console.log(`Server listening on Port: ${{PORT}}`) });
+app.listen(PORT, () => { console.log(`Server listening on Port: ${PORT}`) });
 
 module.exports = app;
