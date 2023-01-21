@@ -14,9 +14,25 @@ innerviewController.getPeople = (req, res, next) => {
       next();
     })
     .catch(err => next({
-      log: `Error occurred when trying to getCharacters: ${err}`,
-      message: { err:  'Issue ocurred with starWarsController.getCharacters'},
+      log: `Error occurred when trying to retrieve list of Codesmith Alumns: ${err}`,
+      message: { err:  'Issue ocurred with innerviewController.getPeople'},
     }));
   };
+
+  innerviewController.getPosts = (req, res, next) => {
+    const queryText = `
+      SELECT * FROM posts
+    `;
+
+    db.query(queryText)
+      .then(results => {
+        res.locals.results = results.rows;
+        next();
+      })
+      .catch(err => next({
+        log: `Error occurred when trying to retrieve list of Posts: ${err}`,
+        message: { err: 'Issue occurred with innerviewController.getPosts'},
+      }));
+  }
 
   module.exports = innerviewController;
