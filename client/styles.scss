@@ -156,6 +156,34 @@ button {
 
 // Post
 
+.postPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .postContents {
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-line {
+    margin-top: 25px;
+}
+
+.sm-input-box {
+    min-width: 150px;
+}
+
+.md-input-box {
+    min-width: 500px;
+    min-height: 100px;
+}
+
+.lg-input-box {
+    min-width: 500px;
+    min-height: 300px;
 }
