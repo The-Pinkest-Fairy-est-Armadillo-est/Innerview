@@ -6,32 +6,10 @@ module.exports = {
   entry: './client/index.js',
   output: {
     path: path.resolve(__dirname, './build'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/'
   },
   mode: 'development',
-  module: {
-    rules: [
-      {
-        test: /\.jsx?/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
-          }
-        }
-      },
-      {
-        test: /\.s[ac]ss$/i,
-        exclude: /node_modules/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'sass-loeader',
-        ]
-      }
-    ]
-  },
   devServer: {
     host: 'localhost',
     port: 8080,
@@ -42,18 +20,57 @@ module.exports = {
       publicPath: '/',
     },
     proxy: {
-      '/': {
+      '/api/**': {
         target: 'http://localhost:3000',
+        pathRewrite: {'^/api': ''},
         secure: false,
-        changeOringin: true,
       }
     },
-    open: true // doublecheck what this does
+    open: true // "Tells dev-server to open the browser after server had been started. Set it to true to open your default browser."
+  },
+  module: {
+    rules: [
+      {
+        test: /.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-env', 
+              '@babel/preset-react'
+            ],
+          }
+        }
+      },
+      {
+        test: /.(css|scss)$/i,
+        exclude: /node_modules/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+        ]
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        exclude: /node-modules/,
+        use: [
+          'file-loader'
+        ],
+      }
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: './index.html'
+      template: './client/index.html'
     })
-  ]
+  ],
+  resolve: {
+    extensions: [
+      '.js',
+      '.jsx'
+    ],
+  }
 };
