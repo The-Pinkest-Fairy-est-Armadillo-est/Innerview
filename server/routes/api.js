@@ -8,4 +8,12 @@ router.get('/', innerviewController.getPeople, (req, res) => {
   res.status(200).json(res.locals.results);
 });
 
+router.get('/posts', innerviewController.getPosts, (req, res) => {
+  res.status(200).json(res.locals.results);
+});
+
+router.post('/', innerviewController.postPosts, (req, res) => {
+  res.status(200).json('posts inserted successfully');
+});
+
 module.exports = router;
