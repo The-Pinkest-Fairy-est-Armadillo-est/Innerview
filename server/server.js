@@ -1,7 +1,7 @@
 const path = require('path');
 const express = require('express');
 const app = express();
-//const apiRouter = require('./routes/api');
+const apiRouter = require('./routes/api');
 
 const PORT = 3000;
 
@@ -10,10 +10,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Possible handling request for static file
-// app.use(express.static(path.resolve(__dirname, '../client')));
+app.use(express.static(path.resolve(__dirname, '../client')));
 
 // Defining Route Handlers
-// app.use('/api', apiRouter);
+app.use('/api', apiRouter);
 
 // Defining catch-all route handler for any requests to unknown routes
 app.use('*', (req, res) => res.status(404).send('Page not found.'));
