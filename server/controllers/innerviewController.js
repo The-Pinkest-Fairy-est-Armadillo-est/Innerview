@@ -3,6 +3,7 @@ const db = require('../models/innerviewModels');
 const innerviewController = {};
 
 innerviewController.getPeople = (req, res, next) => {
+  console.log('executing innerviewController.getPeople')
   // write code here
   const queryText = `
     SELECT * FROM people
@@ -11,6 +12,8 @@ innerviewController.getPeople = (req, res, next) => {
   db.query(queryText)
     .then(results => {
       res.locals.results = results.rows;
+      console.log('within db.query')
+      console.log(res.locals.results)
       next();
     })
     .catch(err => next({
