@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Possible handling request for static file
-// app.use(express.static(path.resolve(__dirname, '../client')));
+app.use(express.static(path.resolve(__dirname, '../client')));
 
 // Defining Route Handlers
 // app.use('/api', apiRouter);
@@ -31,6 +31,6 @@ app.use((err, req, res, next) => {
 });
 
 // Start server and tell it to listen to the PORT assignment for any incoming requests
-app.listen(PORT, () => { console.log(`Server listening on Port: ${{PORT}}`) });
+app.listen(PORT, () => { console.log(`Server listening on Port: ${PORT}`) });
 
 module.exports = app;
