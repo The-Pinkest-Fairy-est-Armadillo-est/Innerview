@@ -15,6 +15,11 @@ a, a:hover, a:focus, a:active {
     color: inherit;
 }
 
+.inputBox {
+    width: 200px;
+    text-align: center;
+}
+
 // navbar
 
 .nav__links {
@@ -124,12 +129,12 @@ button {
 }
 ////////////////////////
 .loginBox {
-    width: 300px;
-    height: 300px;
     border: 1px solid #edf0f1;
     border-radius: 20px;
-
-    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 50px 35px 50px;
 }
 
 .loginSubmitButton {
@@ -266,3 +271,4 @@ button {
     padding: 10px;
     border-radius:15px;
 }
+
