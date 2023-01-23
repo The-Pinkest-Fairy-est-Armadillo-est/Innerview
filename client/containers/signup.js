@@ -8,28 +8,40 @@ const Signup = props => {
     const emailRef = useRef();
     const passRef = useRef();
 
-    const clickHandler = () => {
+    const clickHandler = (e) => {
+        e.preventDefault();
         const body = {
             name: nameRef.current.value,
             password: passRef.current.value,
             email: emailRef.current.value,
         }
-
+        console.log(body.email);
         fetch('http://localhost:3000/api/signup', {
             method: 'POST',
             headers: {
-                'Content-Type': 'Application/JSON',
+                'Content-Type': 'application/JSON',
             },
             body: JSON.stringify(body),
         })
             .then(data => data.json())
             .then(data => {
-                console.log(data)
-                return useNavigate('/');
+                console.log(data);
+                if (data === 'missingInfo') {
+                    console.log('missing data');
+                    alert('Please fill in all the fields and try again.');
+                }
+                // else if (data === []) {
+                //     console.log('email exists', data);
+                //     alert('This email already exists. Please sign-in.');
+                // }
+                // else if (data === 'userAdded') {
+                //     // add logic to save email and name to state before entering interface
+                //     return useNavigate('/login');
+                // }
             })
             .catch(err => {
                 console.log('Error POST request on Sign up submit:', err);
-                return prompt("Bad request");
+                return alert("Bad request");
             });
     }
     
@@ -76,16 +88,14 @@ const Signup = props => {
                     <button 
                         type='submit' 
                         className='signUpButton input-line' 
-                        onSubmit={clickHandler}
-                    >
-                        <Link to = '/interface'>Sign up</Link>
+                    >Sign up
                     </button>
-                    <button 
+                    <Link to = '/'><button 
                         type='button' 
                         className='signUpButton input-line'
                     >
-                        <Link to = '/'>Return home</Link>
-                    </button>
+                        Return home
+                    </button></Link>
                 </form>
             </div>
         </div>
