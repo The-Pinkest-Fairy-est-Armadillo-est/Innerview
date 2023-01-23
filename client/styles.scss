@@ -109,7 +109,7 @@ button {
 }
 
 // login
-
+/////////////////////
 .loginPage {
     display: flex;
     flex-direction: column;
@@ -117,14 +117,19 @@ button {
     align-items: center;
     margin-top: 200px;
     font-size: 15px;
-    border: 1px solid red;
+    //border: 1px solid red;
 }
-
+.loginBoxHeader {
+    padding-left:50px
+}
+////////////////////////
 .loginBox {
     width: 300px;
     height: 300px;
     border: 1px solid #edf0f1;
     border-radius: 20px;
+
+    
 }
 
 .loginSubmitButton {
@@ -141,7 +146,7 @@ button {
 }
 // -------------------
 .feedContainer {
-    width: 600px;
+    width: 610px;
     height: 90vh;
     border: 2px solid #9d9d9d;
     overflow: scroll;
@@ -198,16 +203,21 @@ button {
     //background-color:#ffffff39;
     grid-gap: 4px;
     border: 3px rgb(255, 255, 255);
+    padding-left : 10px;
     
   
 }
 .bodyComponent{
     font-family: 'Montserrat', sans-serif;
+    width : 275px;
+    padding-left:50px;
     border: 3px rgb(255, 255, 255);
     background-color: #24252a38;
     height:auto;
     padding: 5px;
     border-radius:15px;
+    box-shadow: 1px 1px #ffffff;
+    
     
 
 }
@@ -218,8 +228,10 @@ button {
 .bodyComponentTitle{
     font-weight:bold;
     font-size:small;
+    text-decoration: underline;
 }
 .interviewBodyNotesHeader{
+    font-style:italic;
     font-weight:bold;
     font-size:small;
 }
@@ -228,6 +240,7 @@ button {
     font-size:medium;
 }
 .interviewHeaderCompany{
+    font-style:italic;
     font-weight:lighter;
     font-size:small;
 }
@@ -246,6 +259,7 @@ button {
 .interviewContainer{
     background-color:#cfcfcf8a;
     border-radius:15px;
+    box-shadow: 1px 1px #dcdcdc;
 }
 .interviewBodyNotes{
     //background-color:rgb(54, 54, 54);
