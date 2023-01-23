@@ -20,6 +20,11 @@ a, a:hover, a:focus, a:active {
     text-align: center;
 }
 
+.full-fp {
+    height: 100vh;
+    width: 100vw;
+}
+
 // navbar
 
 .nav__links {
@@ -74,10 +79,15 @@ button {
     color: #edf0f1;
 }
 
+.nav-container {
+    height: 6vh;
+}
+
 .nav-left {
     display: flex;
     align-items: center;
     width: 200px;
+    margin-left: 1rem;
 }
 
 .nav-right {
@@ -85,13 +95,14 @@ button {
     justify-content: right;
     align-items: center;
     width: 200px;
+    margin-right: 1rem;
 }
 
 .nav-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 2%;
+    height: 6vh;
 }
 
 .nav-menu {
@@ -113,9 +124,17 @@ button {
     justify-content: center;
 }
 
+.imgcontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.35;
+    margin: 100px;
+}
+
 .mainimg {
-
-
+    width: 100vw;
+    height: 92vh;
 }
 
 // login
