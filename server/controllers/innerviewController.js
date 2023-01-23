@@ -21,6 +21,7 @@ innerviewController.getPeople = (req, res, next) => {
       message: { err:  `Issue ocurred with innerviewController.getPeople`},
     }));
   };
+  
   innerviewController.getPosts = (req, res, next) => {
     console.log('executing innerviewController.getPosts')
     // write code here
@@ -41,20 +42,40 @@ innerviewController.getPeople = (req, res, next) => {
 
   innerviewController.postPosts = (req, res, next) => {
     console.log(req.body)
-    const { people_id, role, behavioral_questions, technical_challenges, sense_of_culture, interview_description, company_name, location, placeholder1, placeholder2, placeholder3, placeholder4 } = req.body;
-    const params = [ people_id, role, behavioral_questions, technical_challenges, sense_of_culture, interview_description, company_name, location, placeholder1, placeholder2, placeholder3, placeholder4 ];
+    const { email, role, behavioral_questions, technical_challenges, sense_of_culture, interview_description, company_name, location } = req.body;
+
+    const firstQuery = `
+      SELECT _id
+      FROM people
+      WHERE email='${email}';
+    `;
+
+    let people_id;
+    db.query(firstQuery)
+      .then(result => people_id = result)
+      .catch(err => next({
+        log: `Error occurred when trying to retrieve person ID via email: ${err}`,
+        message: { err:  `Issue ocurred when trying to post. Please try again later.`},
+      }));
+
+    const params = [ people_id, role, behavioral_questions, technical_challenges, sense_of_culture, interview_description, company_name, location ];
+    if (params.includes('')) return next({
+      log: `Error occurred when trying to update database with new post. Not all fields are populated.`,
+      message: { err:  `Please make sure to fill in all field.`},
+    });
 
     const queryText = `
-      INSERT INTO posts (people_id, role, behavioral_questions, technical_challenges, sense_of_culture, interview_description, company_name, location, placeholder1, placeholder2, placeholder3, placeholder4)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
+      INSERT INTO posts (people_id, role, behavioral_questions, technical_challenges, sense_of_culture, interview_description, company_name, location)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
     `;
+    
     db.query(queryText, params)
       .then(() => {
         return next();
       })
       .catch(err => next({
-        log: `Error occurred when trying to get posts: ${err}`,
-        message: { err:  `Issue ocurred with innerviewController.postPosts`},
+        log: `Error occurred when trying to update database with new post: ${err}`,
+        message: { err:  `Issue ocurred when trying to post. Please try again later.`},
       }));
   },
 
