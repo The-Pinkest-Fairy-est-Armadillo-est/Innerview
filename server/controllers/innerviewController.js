@@ -1,6 +1,6 @@
 const db = require('../models/innerviewModels');
 
-const escape = require('pg-escape');
+// const escape = require('pg-escape');
 
 const innerviewController = {};
 
@@ -21,7 +21,6 @@ innerviewController.getPeople = (req, res, next) => {
       message: { err:  `Issue ocurred with innerviewController.getPeople`},
     }));
   };
-
   innerviewController.getPosts = (req, res, next) => {
     console.log('executing innerviewController.getPosts')
     // write code here
