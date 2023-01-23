@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.get('/', innerviewController.getPeople, (req, res) => {
   console.log('at endpoint of GET apiRouter')
-  console.log(res.locals.results)
+  //console.log(res.locals.results)
   let returnThis = res.locals.results;
   res.status(200).json(returnThis);
 });
