@@ -1,5 +1,5 @@
 // import modules
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link , useNavigate} from 'react-router-dom';
 
 
@@ -7,12 +7,11 @@ import { Link , useNavigate} from 'react-router-dom';
 
 // define 'Login' React functional component using implicit return ()
 const Login = props => {
-     const navigate = useNavigate();
-   
-    const[loginInfo,setLoginInfo] = useState({email: 'hi', name: 'hello'});
+    var validated = false;
+    const navigate = useNavigate();
+    const[loginInfo,setLoginInfo] = useState({email: 'hi', name: 'hello', validated: false});
     console.log('loginInfo',loginInfo);
     const emailRef = useRef();
-
     const passwordRef = useRef();
 
 //      ___           _ _              _ _    _      _        
@@ -25,9 +24,10 @@ const Login = props => {
 //    / _ \ ' \  |  _| '_/ _ \ ' \  _| / -_) ' \/ _` |  _  | | 
 //    \___/_||_| |_| |_| \___/_||_\__| \___|_||_\__,_| (_) | | 
 //                                                          \_\
-                                                                                                                                          
+//-brach                                                                     
 
     const iClickedTheDamnButton=(e)=>{
+        let tempUserInfo = {};
         e.preventDefault();
         console.log('clicked the damn button')
         const body = {email : emailRef.current.value, password : passwordRef.current.value}
@@ -36,23 +36,24 @@ const Login = props => {
         .then((data)=>data.json())
         .then((parsedData)=>{
             let checkLogin = {}
-            console.log('this is the user data from the backend')
-            console.log(parsedData)
             //move username and password to temporary object
-            let validated = false;
+           validated = false;
             for(let userEle of parsedData){
-                console.log('current userEle: ')
-                console.log(userEle)
                 if (userEle['email'] === body.email && userEle['password']===body.password){
-                    console.log('username found & password correct')
-                    setLoginInfo({email: userEle['email'], name: userEle['name']})
+                    tempUserInfo = {email: userEle['email'], name: userEle['name']}
+                    console.log(tempUserInfo);
+                    setLoginInfo({email: userEle['email'], name: userEle['name'], validated: true})
+                    console.log('tempUserInfo', tempUserInfo)
                     console.log('loginInfo2', loginInfo)
-                  validated = true;
+                    
+                    validated = true;
+                    console.log(validated)
+                    
                 }
             }
             if (validated === true){
                 console.log('email and password match')
-                navigate('/interface');
+                // navigate('/interface', {state:loginInfo});
             }else{
                 console.log('either password does not match or user not found')
                 alert('invalid login 🥲')
@@ -60,13 +61,17 @@ const Login = props => {
 
             // first, check if the username is already present
            
-        })
+        }).then(()=>validated ===true)
         
         console.log(body)
     }
  
 
-    
+    useEffect(()=> {
+        console.log('login use effect', loginInfo, validated)
+         if(loginInfo.validated) navigate('/interface', {state:loginInfo})
+
+    }, [loginInfo])
     
     
     return(
