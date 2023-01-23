@@ -1,10 +1,10 @@
 // import modules
 import React from 'react';
 import { useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Post = props => {
-
+    const location = useLocation();
     const navigate = useNavigate();
     const companyNameRef = useRef();
     const roleRef = useRef();
@@ -13,7 +13,7 @@ const Post = props => {
     const questionsRef = useRef();
     const challengesRef = useRef();
     const descriptionRef = useRef();
-
+    console.log('within post', location.state)
     const handleSubmit = e => {
         e.preventDefault();
         const body = {
@@ -24,6 +24,7 @@ const Post = props => {
             sense_of_culture: cultureRef.current.value,
             company_name: companyNameRef.current.value,
             interview_description: descriptionRef.current.value,
+            email: location.state.email
         }
         fetch('http://localhost:3000/api', {
             method: 'POST',

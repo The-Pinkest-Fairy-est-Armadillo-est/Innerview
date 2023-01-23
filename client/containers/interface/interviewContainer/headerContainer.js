@@ -11,7 +11,7 @@ return(
             {props.interviewInfo.role}
         </div>
         <div>
-            {props.interviewInfo["_id"]}
+            {props.interviewInfo["name"]}
         </div>
         <div className = 'interviewHeaderCompany'>{props.interviewInfo['company_name']}</div>
     </div>
