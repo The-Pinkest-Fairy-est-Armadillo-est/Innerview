@@ -28,16 +28,36 @@ let bodyElements = [
 const BodyContainer = props => (
     <div>
         <div className='interviewBody'>
-            {bodyElements}
+            <div className= "bodyComponent">
+                <div className='bodyComponentTitle'>Location: </div>
+                <div className='bodyComponentDesc'><p></p> {props.interviewInfo.location}<p></p> </div>
+            </div>
+
+            <div className= "bodyComponent">
+                <div className='bodyComponentTitle'>Culture: </div>
+                <div className='bodyComponentDesc'><p></p>  {props.interviewInfo['sense_of_culture']}<p></p> </div>
+            </div>
+
+            <div className= "bodyComponent">
+                <div className='bodyComponentTitle'>Behavioral Questions:</div>
+                <div className = 'bodyComponentDesc'><p></p>  {props.interviewInfo['behavioral_questions']}<p></p> </div>
+            </div>
+
+            <div className= "bodyComponent">
+                <div className='bodyComponentTitle'>Technical Challenges: </div>
+                <div className='bodyComponentDesc'> <p></p> {props.interviewInfo['technical_challenges']}<p></p>  </div>  
+            </div>
+
+
         </div>
         <div className='interviewBodyNotes'>
             <div className = 'interviewBodyNotesHeader'>
             Notes:
+            <p></p>
             </div>
             <div className = 'interviewBodyNotesBody'>
-                The interviewer greeted me with a firm handshake. <br></br> After the interview, I was immediately offered the job on the condition that I participate in the sacrificial blood ritual unquestioningly. <br></br> They offerred me coffee from the office kitchen, which was nice, but it tasted like shit. <br></br>6.5/10 experience overall.
+                {props.interviewInfo['interview_description']} </div>
             </div>
         </div>
-    </div>
 )
 export default BodyContainer
