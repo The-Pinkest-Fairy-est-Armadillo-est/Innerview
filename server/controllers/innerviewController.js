@@ -17,7 +17,7 @@ innerviewController.getPeople = (req, res, next) => {
       next();
     })
     .catch(err => next({
-      log: `Error occurred when trying to get posts: ${err}`,
+      log: `Error occurred when trying to get people: ${err}`,
       message: { err:  `Issue ocurred with innerviewController.getPeople`},
     }));
   };
@@ -40,16 +40,16 @@ innerviewController.getPeople = (req, res, next) => {
     };
 
   innerviewController.postPosts = (req, res, next) => {
-
+    console.log(req.body)
     const { people_id, role, behavioral_questions, technical_challenges, sense_of_culture, interview_description, company_name, location, placeholder1, placeholder2, placeholder3, placeholder4 } = req.body;
     const params = [ people_id, role, behavioral_questions, technical_challenges, sense_of_culture, interview_description, company_name, location, placeholder1, placeholder2, placeholder3, placeholder4 ];
 
     const queryText = `
-      INSERT INTO posts (people_id, role, behavioral_questions, technical_challenges, sense_of_culture, interview_description, company_name, location)
+      INSERT INTO posts (people_id, role, behavioral_questions, technical_challenges, sense_of_culture, interview_description, company_name, location, placeholder1, placeholder2, placeholder3, placeholder4)
       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
-    `
+    `;
     db.query(queryText, params)
-      .then(results => {
+      .then(() => {
         return next();
       })
       .catch(err => next({

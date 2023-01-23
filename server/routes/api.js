@@ -16,7 +16,7 @@ router.get('/posts', innerviewController.getPosts, (req, res) => {
 });
 
 router.post('/', innerviewController.postPosts, (req, res) => {
-  res.status(200).json('posts inserted successfully');
+  res.status(200).send('posts inserted successfully');
 });
 
 module.exports = router;
