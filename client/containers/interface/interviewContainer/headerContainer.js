@@ -2,15 +2,18 @@ import React from 'react';
 
 
 
-const HeaderContainer = props => (
+const HeaderContainer = props => {
+console.log('within HeaderContainer', props)
+
+return(
     <div className='interviewHeader'>
-        <div >
-            <strong>Position Title</strong>
+        <div className = 'interviewHeaderRole' >
+            {props.interviewInfo.role}
         </div>
         <div>
-            {props.username}
+            {props.interviewInfo["_id"]}
         </div>
-        <div >Company Name</div>
+        <div className = 'interviewHeaderCompany'>{props.interviewInfo['company_name']}</div>
     </div>
-)
+)}
 export default HeaderContainer

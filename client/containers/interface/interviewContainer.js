@@ -2,13 +2,14 @@ import React from 'react';
 import HeaderContainer from './interviewContainer/headerContainer';
 import BodyContainer from './interviewContainer/bodyContainer';
 const InterviewContainer = props => {
-console.log('within interviewContainer', props.userInfo.name)
+console.log('within interviewContainer', props)
+
 return(
     <div>
-        <div>_____________________________________________________________________________________________________________________________________</div>
-        <div className = 'interviewContainer'>
-        <HeaderContainer username = {props.userInfo.name}/>
-        <BodyContainer/>
+        <div><p></p></div>
+         <div className = 'interviewContainer'>
+        <HeaderContainer interviewInfo = {props.interviewInfo}/>
+        <BodyContainer  interviewInfo = {props.interviewInfo}/>
         </div>
     </div>
 )};
