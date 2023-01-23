@@ -4,9 +4,9 @@ const db = require('../models/innerviewModels');
 
 const innerviewController = {};
 
+
 innerviewController.getPeople = (req, res, next) => {
   console.log('executing innerviewController.getPeople')
-  // write code here
   const queryText = `
     SELECT * FROM people
   `;
@@ -59,10 +59,10 @@ innerviewController.getPeople = (req, res, next) => {
       }));
 
     const params = [ people_id, role, behavioral_questions, technical_challenges, sense_of_culture, interview_description, company_name, location ];
-    if (params.includes('')) return next({
-      log: `Error occurred when trying to update database with new post. Not all fields are populated.`,
-      message: { err:  `Please make sure to fill in all field.`},
-    });
+    if (params.includes('')) {
+      res.locals.results = 'empty field'; //send this string to front end not all fields are filled
+      return next();
+    };
 
     const queryText = `
       INSERT INTO posts (people_id, role, behavioral_questions, technical_challenges, sense_of_culture, interview_description, company_name, location)
@@ -71,6 +71,7 @@ innerviewController.getPeople = (req, res, next) => {
     
     db.query(queryText, params)
       .then(() => {
+        res.locals.results = 'successfully posted';
         return next();
       })
       .catch(err => next({
