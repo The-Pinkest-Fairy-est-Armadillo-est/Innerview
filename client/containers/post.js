@@ -16,6 +16,26 @@ const Post = props => {
 
     const handleSubmit = e => {
         e.preventDefault();
+        const body = {
+            role: roleRef.current.value,
+            location: locationRef.current.value,
+            behavioral_questions: questionsRef.current.value,
+            technical_challenges: challengesRef.current.value,
+            sense_of_culture: cultureRef.current.value,
+            company_name: companyNameRef.current.value,
+            interview_description: descriptionRef.current.value,
+        }
+        fetch('http://localhost:3000/api', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'Application/JSON',
+            },
+            body: JSON.stringify(body),
+        })
+            .then(data => data.json())
+            .then(data => console.log(data))
+            .catch((err) => console.log('Post Request error:', err))
+
         console.log(companyNameRef.current.value);
         console.log(roleRef.current.value);
         console.log(locationRef.current.value);
