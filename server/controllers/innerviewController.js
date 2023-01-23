@@ -1,6 +1,6 @@
 const db = require('../models/innerviewModels');
 
-const escape = require('pg-escape');
+// const escape = require('pg-escape');
 
 const innerviewController = {};
 
@@ -18,9 +18,26 @@ innerviewController.getPeople = (req, res, next) => {
     })
     .catch(err => next({
       log: `Error occurred when trying to get posts: ${err}`,
-      message: { err:  `Issue ocurred with innerviewController.getPosts`},
+      message: { err:  `Issue ocurred with innerviewController.getPeople`},
     }));
   };
+  innerviewController.getPosts = (req, res, next) => {
+    console.log('executing innerviewController.getPosts')
+    // write code here
+    const queryText = `
+      SELECT * FROM posts
+    `;
+  
+    db.query(queryText)
+      .then(results => {
+        res.locals.results = results.rows;
+        next();
+      })
+      .catch(err => next({
+        log: `Error occurred when trying to get posts: ${err}`,
+        message: { err:  `Issue ocurred with innerviewController.getPosts`},
+      }));
+    };
 
   innerviewController.postPosts = (req, res, next) => {
 
