@@ -6,10 +6,11 @@ const cors = require('cors')
 const PORT = 3000;
 
 
+// Allow Cross-Origin
 app.use(cors());
+
 // Parsing request body and any params in the url
 app.use(express.json());
-
 app.use(express.urlencoded({ extended: true }));
 
 // Possible handling request for static file
