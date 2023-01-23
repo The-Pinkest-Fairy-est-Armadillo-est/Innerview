@@ -14,7 +14,7 @@ router.get('/posts', innerviewController.getPosts, (req, res) => {
 });
 
 router.post('/', innerviewController.postPosts, (req, res) => {
-  res.status(200).send('posts inserted successfully');
+  res.status(200).json(res.locals.results);
 });
 
 router.post('/signup', innerviewController.signUp, (req, res) => {
