@@ -33,17 +33,11 @@ const Post = props => {
             body: JSON.stringify(body),
         })
             .then(data => data.json())
-            .then(data => console.log(data))
+            .then(data => {
+                if (data === 'empty field') alert('Please fill in all fields');
+                else if (data !== 'empty field') navigate('/interface');
+            })
             .catch((err) => console.log('Post Request error:', err))
-
-        console.log(companyNameRef.current.value);
-        console.log(roleRef.current.value);
-        console.log(locationRef.current.value);
-        console.log(cultureRef.current.value);
-        console.log(questionsRef.current.value);
-        console.log(challengesRef.current.value);
-        console.log(descriptionRef.current.value);
-        navigate('/');
     }
     
     return (

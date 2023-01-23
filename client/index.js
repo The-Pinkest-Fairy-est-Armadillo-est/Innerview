@@ -12,5 +12,8 @@ const container = document.getElementById('root');
 const reactRoot = createRoot(container);
 
 reactRoot.render(
+    <div>
     <App />
+    <img className="mainimg" src = "https://images.pexels.com/photos/5668863/pexels-photo-5668863.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
+    </div>
 );

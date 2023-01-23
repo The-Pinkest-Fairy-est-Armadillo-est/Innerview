@@ -13,8 +13,8 @@ const Navbar = props => (
                 <div className = 'nav__links'>BOOTCAMP</div>
             </div>
             <div className = 'nav-right'>
-                <button className = 'nav__links'><Link to = "/login">LOGIN</Link></button>
-                <button className = 'signUpButton'><Link to = "/signup">GET STARTED</Link></button>
+            <Link to = "/login"><button className = 'nav__links'>LOGIN</button></Link>
+            <Link to = "/signup"><button className = 'signUpButton'>GET STARTED</button></Link>
             </div>
         </div>
     </div>
