@@ -3,7 +3,8 @@ import { useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 
 const Signup = props => {
-
+    //useRef hook uses document.getElements.... to pull info from dom elements
+    //find useRef in jsx attributes of components to determine where the info comes from
     const nameRef = useRef();
     const emailRef = useRef();
     const passRef = useRef();
@@ -27,16 +28,12 @@ const Signup = props => {
             .then(data => {
                 console.log('data', data);
                 if (data === 'missingInfo') {
-                    console.log('missing data');
                     alert('Please fill in all the fields and try again.');
                 }
                 else if (data === 'userexists') {
-                    console.log('email exists');
                     alert('This email already exists. Please sign-in.');
                 }
                 else if (data === 'userAdded') {
-                    // add logic to save email and name to state before entering interface
-                    // useNavigate('/login');
                     alert('Sign Up Successful! Please sign in.');
                 }
             })

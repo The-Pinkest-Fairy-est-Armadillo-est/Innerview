@@ -1,29 +1,8 @@
 import React from 'react';
 
-//We're gonna need to undo any changes made to the sass file to avoid git issues.
-//play around with it, save the desired style mods here, commented out
-// then patch them in after we merge
-let bodyElements = [
-    <div className= "bodyComponent">
-        <div className='bodyComponentTitle'>Location: </div>
-        <div className='bodyComponentDesc'>The Thunderdome</div>
-    </div>,
 
-    <div className= "bodyComponent">
-        <div className='bodyComponentTitle'>Culture: </div>
-        <div className='bodyComponentDesc'> Pretentious</div>
-    </div>,
-
-    <div className= "bodyComponent">
-        <div className='bodyComponentTitle'>Behavioral Questions:</div>
-        <div className = 'bodyComponentDesc'> Provide the objectively correct solution to the Trolley Problem</div>
-    </div>,
-
-    <div className= "bodyComponent">
-        <div className='bodyComponentTitle'>Technical Challenges: </div>
-        <div className='bodyComponentDesc'> Execute a perfect standing backflip </div>  
-    </div>
-]
+//there are five body components, each with a title and body. Distinct so that they can be styled distinctly.
+//location, culture,behavioral questions, technical challenges, and notes/interview description.
 
 const BodyContainer = props => (
     <div>
@@ -55,6 +34,7 @@ const BodyContainer = props => (
             Notes:
             <p></p>
             </div>
+            {/* our code does not handle line breaks. would be cool if it did. */}
             <div className = 'interviewBodyNotesBody'>
                 {props.interviewInfo['interview_description']} </div>
             </div>

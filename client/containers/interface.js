@@ -6,7 +6,7 @@ import FeedContainer from './interface/feedContainer';
 // define 'Interface' React component
 const Interface = props => {
     const location= useLocation();
-    console.log('within interface', location.state)
+    //use location to pass down the user/validation state established in the login page
     return(
     <div className = 'Interface'>
         <button type = 'submit' className = 'signUpButton'><Link to = '/post' state ={location.state} >Post Interview</Link></button>

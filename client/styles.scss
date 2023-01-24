@@ -138,7 +138,7 @@ button {
 }
 
 // login
-/////////////////////
+
 .loginPage {
     display: flex;
     flex-direction: column;
@@ -146,12 +146,11 @@ button {
     align-items: center;
     margin-top: 30vh;
     font-size: 15px;
-    //border: 1px solid red;
 }
 .loginBoxHeader {
     padding-left:50px
 }
-////////////////////////
+
 .loginBox {
     border: 1px solid #edf0f1;
     border-radius: 20px;
@@ -166,14 +165,13 @@ button {
 }
 
 // interface
-//--------------------
+
 .Interface {
     display: flex;
     flex-direction: column;
     align-items: center;
-    //border: 1px solid red;
 }
-// -------------------
+
 .feedContainer {
     width: 610px;
     height: 90vh;
@@ -181,7 +179,7 @@ button {
     overflow: scroll;
     border-radius: 15px;
 }
-// -------------------
+
 .postInterview {
     margin: 10px 0px;
     font-size: 12px;
@@ -224,10 +222,13 @@ button {
     min-height: 300px;
 }
 
+
+// two body components, given half the width of their parent container in grid-template-columns
 .interviewBody{
   
     width : 600px;
     display: grid;
+    
     grid-template-columns: 50% 50%;
     //background-color:#ffffff39;
     grid-gap: 4px;
@@ -239,21 +240,17 @@ button {
 .bodyComponent{
     font-family: 'Montserrat', sans-serif;
     width : 275px;
-    padding-left:50px;
     border: 3px rgb(255, 255, 255);
     background-color: #24252a38;
     height:auto;
     padding: 5px;
     border-radius:15px;
     box-shadow: 1px 1px #ffffff;
-    
-    
 
 }
 
 
-// ----------
-//brach has modified the following style
+
 .bodyComponentTitle{
     font-weight:bold;
     font-size:small;
@@ -273,12 +270,13 @@ button {
     font-weight:lighter;
     font-size:small;
 }
-// ----------
 
 
+//for the header,
+//a flex box with three components:
+//position title, name of poster, and company name
+//note how the grid-template column is specified to make that work
 .interviewHeader{
-   // background-color:#8787878a;
-    
     display:grid;
     grid-template-columns:90% 10%;
     grid-gap: 4px;
@@ -291,7 +289,6 @@ button {
     box-shadow: 1px 1px #dcdcdc;
 }
 .interviewBodyNotes{
-    //background-color:rgb(54, 54, 54);
     padding: 10px;
     border-radius:15px;
 }
