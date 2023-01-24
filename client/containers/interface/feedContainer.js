@@ -20,7 +20,7 @@ useEffect(()=>{
             let newInterviews = []
             for (let i = 0;i<parsedData.length;i++){
                 setInput(i);
-                newInterviews.push(
+                newInterviews.unshift(
                 <InterviewContainer id={'interview ' + i} interviewInfo={parsedData[i]} /> 
                 )}
             interviews = newInterviews;

@@ -23,7 +23,10 @@ innerviewController.getPosts = (req, res, next) => {
   console.log('executing innerviewController.getPosts')
   // write code here
   const queryText = `
-    SELECT * FROM posts
+  SELECT people.name, posts.role, posts.behavioral_questions, posts.technical_challenges, posts.sense_of_culture, posts.interview_description, posts.company_name, posts.location
+  FROM posts
+  LEFT JOIN people
+  ON people._id = posts.people_id;
   `;
 
   db.query(queryText)
@@ -104,7 +107,7 @@ innerviewController.signUp = async (req, res, next) => {
     }));
 
   if (existingUser) {
-    res.locals.user = [];
+    res.locals.user = 'userexists';
     return next();
   }
   else {
