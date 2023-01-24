@@ -77,11 +77,32 @@ const Login = props => {
     return(
     <div className = 'loginPage'>
         <div className = 'loginBox'>
-            <div className = 'loginBoxHeader'>Login</div>
-            <form onSubmit={iClickedTheDamnButton}>
+            <h1>Login</h1>
+            <form className = 'postContents' onSubmit={iClickedTheDamnButton}>
+                <label 
+                    htmlFor='Email'
+                >Email: 
+                </label>
                 <input type = 'email' id = 'email' className = 'inputBox' placeholder = 'Your Email' ref = {emailRef}/>
+                <label 
+                    htmlFor='Password'
+                    className = 'input-line'
+                >Password: 
+                </label>
                 <input type = 'password' id = 'password' className = 'inputBox' placeholder = 'Your Password' ref = {passwordRef}/>
-                <button type = 'submit' onClick = {iClickedTheDamnButton} className = 'loginButton'>Sign in</button>
+                <button type = 'submit' onClick = {iClickedTheDamnButton} className = 'signUpButton input-line'>Sign in</button>
+                <Link to = '/signup'><button 
+                        type='button' 
+                        className='signUpButton input-line'
+                    >
+                        Sign up
+                    </button></Link>
+                <Link to = '/'><button 
+                        type='button' 
+                        className='signUpButton input-line'
+                    >
+                        Return home
+                    </button></Link>
             </form>
         </div>
     </div>

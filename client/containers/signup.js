@@ -25,19 +25,20 @@ const Signup = props => {
         })
             .then(data => data.json())
             .then(data => {
-                console.log(data);
+                console.log('data', data);
                 if (data === 'missingInfo') {
                     console.log('missing data');
                     alert('Please fill in all the fields and try again.');
                 }
-                // else if (data === []) {
-                //     console.log('email exists', data);
-                //     alert('This email already exists. Please sign-in.');
-                // }
-                // else if (data === 'userAdded') {
-                //     // add logic to save email and name to state before entering interface
-                //     return useNavigate('/login');
-                // }
+                else if (data === 'userexists') {
+                    console.log('email exists');
+                    alert('This email already exists. Please sign-in.');
+                }
+                else if (data === 'userAdded') {
+                    // add logic to save email and name to state before entering interface
+                    // useNavigate('/login');
+                    alert('Sign Up Successful! Please sign in.');
+                }
             })
             .catch(err => {
                 console.log('Error POST request on Sign up submit:', err);

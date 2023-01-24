@@ -107,7 +107,7 @@ innerviewController.signUp = async (req, res, next) => {
     }));
 
   if (existingUser) {
-    res.locals.user = [];
+    res.locals.user = 'userexists';
     return next();
   }
   else {
