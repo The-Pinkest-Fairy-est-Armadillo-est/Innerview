@@ -1,22 +1,27 @@
+// So we can use 'path' methods with __dirname to ensure file path integrity
 const path = require('path');
 const express = require('express');
-const app = express();
+// Requiring-in our /api routers
 const apiRouter = require('./routes/api');
+// Requiring-in 'cors' to avoid CORS errors
 const cors = require('cors')
+// Saving the Port Number into a const
 const PORT = 3000;
 
+// Instantiate our server
+const app = express();
 
-// Allow Cross-Origin
+// Allow Cross-Origin Resource-Sharing to avoid CORS error
 app.use(cors());
 
-// Parsing request body and any params in the url
+// Parsing request body, and any params in the url
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Possible handling request for static file
-app.use(express.static(path.resolve(__dirname, '../client')));
+// Handling request for static files in our 'client' folder
+app.use(express.static(path.resolve(__dirname, '../build')));
 
-// Defining Route Handlers
+// Defining Route Handlers in our 'apiRouter' import
 app.use('/api', apiRouter);
 
 // Defining catch-all route handler for any requests to unknown routes
