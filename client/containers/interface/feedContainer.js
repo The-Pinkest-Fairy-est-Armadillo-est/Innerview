@@ -14,10 +14,22 @@ const FeedContainer = props => {
     const[input,setInput] = useState("This is the initial state");
     //let interviews = []
 useEffect(()=>{
+    //note: when producing queries, we need to pass data to the backend
+    //to communicate what fields we want to query with.
+    //fetch defaults to get- that's what this one does.
+    //get requests' bodies don't work so you'll need to make post request
+    //to the backend to pass this info. From there, the backend will
+    //construct a query reflecting the desired post
+    //alternatively you could write login for this in the front end, but that's intensive
+    //for the browser and wouldn't work for large databases.
+    //you could def get away with it for this project tho
     fetch('http://localhost:3000/api/posts')
         .then(data=>data.json())
         .then((parsedData)=>{
-            let newInterviews = []
+            //pull all posts from db
+            //for each ele in this array, create an interview container.
+            //data passed through prop interviewInfo
+            let newInterviews = [] //meant to say new set of interviews; not to imply that only new ones are pulled
             for (let i = 0;i<parsedData.length;i++){
                 setInput(i);
                 newInterviews.unshift(

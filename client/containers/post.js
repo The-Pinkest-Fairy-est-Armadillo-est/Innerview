@@ -13,7 +13,6 @@ const Post = props => {
     const questionsRef = useRef();
     const challengesRef = useRef();
     const descriptionRef = useRef();
-    console.log('within post', location.state)
     const handleSubmit = e => {
         e.preventDefault();
         const body = {
@@ -121,6 +120,7 @@ const Post = props => {
                     htmlFor = "description"
                     className = 'input-line'
                 >Interview Description:
+                {/* Our code does not handle line breaks. Would be cool if it did. */}
                 </label>
                 <textarea 
                     name='Interview Description' 
