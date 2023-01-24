@@ -7,6 +7,7 @@ const Navbar = props => (
             <div className = 'nav-left'>
                 <div id = 'logo'>INNERVIEW</div>
             </div>
+            {/* These links don't do anything. Would be cool if they did. */}
             <div className = 'nav-menu'>    
                 <div className = 'nav__links'>OUTREACH</div>
                 <div className = 'nav__links'>RESOURCES</div>

@@ -8,6 +8,8 @@ import Interface from './interface';
 import Post from './post';
 import Signup from './signup';
 
+
+//react router absolutely fucks
 const App = props => {
     return (
         <BrowserRouter>

@@ -2,7 +2,6 @@ import React from 'react';
 import HeaderContainer from './interviewContainer/headerContainer';
 import BodyContainer from './interviewContainer/bodyContainer';
 const InterviewContainer = props => {
-//console.log('within interviewContainer', props)
 
 return(
     <div>
